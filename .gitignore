@@ -1,0 +1,88 @@
+# ========== Unity Specific ==========
+
+# Ignore auto-generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# Ignore cache and local settings
+MemoryCaptures/
+.DS_Store
+.vscode/
+.vsconfig
+.vs/
+.idea/
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+
+# Ignore Visual Studio & Rider files
+*.csproj
+*.unityproj
+*.sln
+*.sln*
+*.vcxproj
+*.vcxproj*
+*.pidb
+*.suo
+*.user
+*.tt
+*.log
+*.tlog
+*.ilk
+*.aps
+*.ncb
+*.opendb
+*.VC.db
+
+# Ignore Unity packages
+Packages/com.unity.package-manager-do-not-use.lock
+Packages/com.unity.render-pipelines.high-definition-config/Settings.json
+
+# Ignore build artifacts
+*.apk
+*.aab
+*.unitypackage
+*.zip
+
+# Ignore Play Mode & Editor prefs
+*.swp
+*.lock
+*.lock.json
+*.log
+*.obj
+*.sav
+*.bak
+*.db
+
+# Ignore Addressables build cache
+AddressableAssetsData/*/AssetGroups/*.json
+
+# Ignore JetBrains Rider / ReSharper
+.idea/
+*.dotSettings.user
+
+# Ignore temporary script compilation results
+#*.dll
+#*.exe
+*.mdb
+
+# ========== Git LFS (Optional) ==========
+# If using Git LFS for large files (textures, audio, etc.)
+# Uncomment the following lines:
+# *.psd filter=lfs diff=lfs merge=lfs -text
+# *.mp3 filter=lfs diff=lfs merge=lfs -text
+# *.wav filter=lfs diff=lfs merge=lfs -text
+# *.mp4 filter=lfs diff=lfs merge=lfs -text
+
+# Krita backup files
+*.kra
+*.kra.meta

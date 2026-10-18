@@ -1,0 +1,176 @@
+setcpm(32.5)
+
+const kick = s("bd*4")
+  .bank("RolandTR909")
+  .gain(0.85)
+  .shape(0.35)
+  .distort(0.15)
+
+const subPulse = note("c1*4")
+  .s("sine")
+  .gain(0.5)
+  .lpf(120)
+
+const hatsClosed = s("hh*16")
+  .bank("RolandTR909")
+  .gain("0.2")
+  .pan(sine.range(0.3, 0.7))
+
+const rim = s("~ rim ~ rim ~ ~ rim ~")
+  .bank("RolandTR909")
+  .room(0.35)
+  .gain(0.6)
+
+const industrialPerc = s("perc(7,16,<0 5 9>)")
+  .bank("RolandTR909")
+  .gain(0.4)
+  .shape(0.2)
+  .room(0.3)
+  .pan(saw.range(0.2, 0.8))
+
+const bass = note("c1 c1 ~ c1 eb1 ~ c1 ~")
+  .s("sawtooth")
+  .lpf(sine.slow(20).range(150, 700))
+  .resonance(18)
+  .distort(0.15)
+  .gain(0.85)
+  .shape(0.2)
+
+const dubStab = note("<[c2,gb2,bb2] ~ ~ ~ [ab1,eb2,g2] ~ ~ ~>")
+  .s("sawtooth")
+  .attack(0.02)
+  .decay(0.4)
+  .sustain(0.1)
+  .release(1.5)
+  .lpf(900)
+  .room(0.7)
+  .size(0.8)
+  .delay(0.4)
+  .delaytime(0.75)
+  .delayfeedback(0.5)
+  .gain(0.3)
+  .shape(0.15)
+
+const voidDrone = note("c0")
+  .s("sine")
+  .slow(16)
+  .attack(3)
+  .release(6)
+  .lpf(180)
+  .gain(0.5)
+
+const abyssVoice = s("brown")
+  .bpf(sine.slow(14).range(250, 900))
+  .bpq(12)
+  .gain(0.28)
+  .pan(sine.slow(9))
+
+const cosmicToll = note("<eb1 ~ ~ ~ ~ ~ ~ ~>")
+  .s("sine")
+  .slow(8)
+  .attack(0.3)
+  .release(4)
+  .lpf(500)
+  .distort(0.3)
+  .room(0.8)
+  .size(0.9)
+  .delay(0.5)
+  .delaytime(0.6)
+  .delayfeedback(0.65)
+  .gain(0.35)
+
+const whisperHiss = s("brown")
+  .hpf(sine.slow(11).range(1500, 6000))
+  .gain(0.12)
+  .sometimesBy(0.3, x => x)
+
+const entry = stack(
+  kick.gain(0.4),
+  subPulse,
+  hatsClosed,
+  bass.lpf(300).gain(0.6),
+  voidDrone.gain(0.3),
+  abyssVoice.gain(0.15)
+)
+
+const pressure = stack(
+  kick,
+  subPulse,
+  hatsClosed,
+  rim,
+  industrialPerc.gain(0.25),
+  bass,
+  dubStab.gain(0.2),
+  voidDrone,
+  abyssVoice
+)
+
+const mainGroove = stack(
+  kick,
+  subPulse,
+  hatsClosed,
+  rim,
+  industrialPerc,
+  bass,
+  dubStab,
+  voidDrone,
+  abyssVoice,
+  cosmicToll.gain(0.25)
+)
+
+const surge = stack(
+  kick.gain(0.95),
+  subPulse,
+  hatsClosed,
+  rim,
+  industrialPerc.gain(0.55),
+  bass.lpf(sine.slow(10).range(300, 1200)),
+  dubStab.gain(0.4),
+  voidDrone,
+  abyssVoice.gain(0.4),
+  cosmicToll.gain(0.4),
+  whisperHiss
+)
+
+const secondWave = stack(
+  kick,
+  subPulse,
+  hatsClosed,
+  rim,
+  industrialPerc,
+  bass,
+  dubStab,
+  voidDrone,
+  abyssVoice.gain(0.4),
+  cosmicToll.gain(0.3),
+  whisperHiss
+)
+
+const windDown = stack(
+  kick,
+  subPulse,
+  bass.distort(0.3),
+  industrialPerc.gain(0.3),
+  voidDrone,
+  abyssVoice.gain(0.5),
+  cosmicToll.gain(0.5),
+  whisperHiss.gain(0.2)
+)
+
+const fadeOut = stack(
+  kick.gain(0.45),
+  subPulse.gain(0.4),
+  bass.gain(0.4).lpf(250),
+  voidDrone.gain(0.6),
+  abyssVoice.gain(0.3)
+)
+
+arrange(
+  [24, entry],
+  [32, pressure],
+  [48, mainGroove],
+  [32, surge],
+  [48, secondWave],
+  [16, windDown],
+  [16, fadeOut]
+)
